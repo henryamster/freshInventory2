@@ -1,0 +1,59 @@
+@keyframes spin {
+    from {
+        transform: rotateY(6deg);
+        transform: scale(.1);
+    }
+    to {
+        transform: rotateY(-6deg);
+        transform: scale(1);
+    }
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(#f4ff81, #43a047);
+    font-weight: 300;
+}
+
+.splash {
+    display: flex;
+    flex: 1 0 auto;
+    min-height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 9vw;
+    white-space: nowrap;
+}
+
+#avo {
+    min-width: 20vw;
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    min-width: 100vw;
+    max-height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 0 auto;
+}
+
+.option {
+    font-size: 3vw;
+    margin: 10px;
+    width: auto;
+}

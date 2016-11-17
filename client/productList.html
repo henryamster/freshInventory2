@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Fresh Inventory -- Product List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body ng-app="freshInventory">
+    <div ng-controller="itemList">
+        <input ng-model="searchText" class="search" placeholder="Search for an item...">
+        <div class="row">
+            <div class="col s6 m4 l3" ng-repeat="item in items | filter:searchText | orderBy:'name'" ng-model="item.name">
+                <div class="card green darken-2">
+                    <div class="card-image">
+                        <img ng-src={{item.picture}}>
+                        <span class="card-title black-text">{{item.name}}</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="lime-text darken-2">UPC/PLU: {{item.upc}}</div>
+                        <div class="nowrap">Current Price: ${{item.currentPrice}}</div>
+                        <div class="nowrap pink-text darken-1" ng-hide="!item.sale">Sale Price: ${{item.salePrice}}</div>
+
+                        <p ng-hide="!item.bulk" class="blue-text lighten-3"><b>Bulk</b></p>
+                        <ul class="collapsible popout" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header">Description</div>
+                                <div class="collapsible-body">
+                                    <p>{{item.description}}</p>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="card-action">
+                        <div class="chip" ng-repeat="tag in item.tags">{{tag}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+
+</body>
+
+</html>
