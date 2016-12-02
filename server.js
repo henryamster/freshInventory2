@@ -21,7 +21,5 @@ app.get('/productList', function(req,res){
   res.sendfile(__dirname + '/client/productList.html');
 })
 
-app.listen(process.env.PORT, process.env.IP, function(){
-  console.log('Server up and running at ' +process.env.IP + ' on port ' +process.env.PORT);
-});
+app.listen(process.env.PORT, process.env.IP);
 

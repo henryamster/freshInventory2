@@ -13,7 +13,8 @@
     <div ng-controller="itemList">
         <input ng-model="searchText" class="search" placeholder="Search for an item...">
         <div class="row">
-            <div class="col s6 m4 l3" ng-repeat="item in items | filter:searchText | orderBy:'name'" ng-model="item.name">
+             <!-- ADD THIS LINE BACK FOR FIREBASE div class="col s12 m4 l3" ng-repeat="item in item-list | filter:searchText | orderBy:'name'" ng-model="item.name"-->
+            <div class="col s12 m4 l3" ng-repeat="item in items | filter:searchText | orderBy:'name'" ng-model="item.name">
                 <div class="card green darken-2">
                     <div class="card-image">
                         <img ng-src={{item.picture}}>
@@ -27,8 +28,8 @@
                         <p ng-hide="!item.bulk" class="blue-text lighten-3"><b>Bulk</b></p>
                         <ul class="collapsible popout" data-collapsible="accordion">
                             <li>
-                                <div class="collapsible-header">Description</div>
-                                <div class="collapsible-body">
+                                <div class="collapsible-header lime lighten-2">Description</div>
+                                <div class="collapsible-body yellow darken-2">
                                     <p>{{item.description}}</p>
                                 </div>
                             </li>
@@ -51,4 +52,18 @@
 
 </body>
 
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+<script>
+  // Initialize Firebase
+ var config = {
+    apiKey: "AIzaSyCBNzlAWE4xyJ9YdYRymo7WEgY1gxOVhcE",
+    authDomain: "fresh-inventory.firebaseapp.com",
+    databaseURL: "https://fresh-inventory.firebaseio.com",
+    storageBucket: "fresh-inventory.appspot.com",
+    messagingSenderId: "566408288574"
+  };
+  firebase.initializeApp(config);
+  
+</script>
 </html>
