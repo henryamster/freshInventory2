@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="freshInventory">
 
 <head>
     <title>Fresh Inventory -- Product List</title>
@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
-<body ng-app="freshInventory">
-    <div ng-controller="itemList">
+<body ng-controller="itemList">
+    <div >
         <input ng-model="searchText" class="search" placeholder="Search for an item...">
         <div class="row">
-             <!-- ADD THIS LINE BACK FOR FIREBASE div class="col s12 m4 l3" ng-repeat="item in item-list | filter:searchText | orderBy:'name'" ng-model="item.name"-->
-            <div class="col s12 m4 l3" ng-repeat="item in items | filter:searchText | orderBy:'name'" ng-model="item.name">
+            <div class="col s12 m4 l3" ng-repeat="item in itemlist | orderBy:'name'" ng-model="item.name">
                 <div class="card green darken-2">
                     <div class="card-image">
                         <img ng-src={{item.picture}}>
@@ -38,7 +37,7 @@
                         </ul>
                     </div>
                     <div class="card-action">
-                        <div class="chip" ng-repeat="tag in item.tags">{{tag}}</div>
+                        <div class="chip" ng-repeat="tag in item.tags">{{tag.Key}}</div>
                     </div>
                 </div>
             </div>
@@ -46,14 +45,16 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script src="/js/app.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+    <script src="/js/app.js"></script>
+
 
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+<!--
 <script>
   // Initialize Firebase
  var config = {
@@ -66,4 +67,5 @@
   firebase.initializeApp(config);
   
 </script>
+-->
 </html>
